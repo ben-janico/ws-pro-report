@@ -24,7 +24,7 @@ var Main = {
     this.addConditionalFormattings();
   },
   initialize: function () {
-    this.loadMissingData();
+    //this.loadMissingData();
   },
   addMenu: function () {
     var ui = SpreadsheetApp.getUi();
@@ -212,6 +212,10 @@ function clearDay() {
 
 function clearWeek() {
   var startOfWeek = Utils.getStartOfWeek(Utils.today());
+    var dates = Utils.getDatesBetween(startOfWeek,Utils.today());
+  for(var di=0;di<dates.length;di++){
+    clearByDate(dates[di]);
+  }
   clearByDate(startOfWeek);
 }
 
@@ -222,7 +226,7 @@ function clearByDate(date) {
   var values = range.getDisplayValues();
   for (var i = values.length - 1; i > -1; i--) {
     var day = values[i][0];
-    if (day >= formattedDate) {
+    if (day == formattedDate) {
       sheet.deleteRow(i + 2);
     }
   }
@@ -234,7 +238,10 @@ function clear() {
 };
 
 function loadByDate(start,end) {
-  clearByDate(start);
+  var dates = Utils.getDatesBetween(start,end);
+  for(var di=0;di<dates.length;di++){
+    clearByDate(dates[di]);
+  }
   var service = new CrossoverService();
   var data = service.collectData(start, end);
   data.sort(function (a, b) {

@@ -14,11 +14,6 @@ Please open the following address in your browser:
   https://accounts.google.com/o/oauth2/auth?client_id.........
 ```
 if your browser will not open automatically, copy and paste link to browser and authorize.
-### Development Environment Prerequisites
-
-```
-* maven
-```
 
 ### Configuration
 Some of properties must be set before using this application.
@@ -37,7 +32,10 @@ Select Other (Custom name) and set this application.name value then generate.
 ```
 mail.auth.username = xxx@aurea.com
 mail.auth.password = xxxxxxxxxx
+mail.replyTo = username@aurea.com
+mail.cc.list=username@aurea.com,
 ```
+mail.cc.list optinal. You can leave empty.
 ##### other smtp configuration
 
 ```
@@ -91,20 +89,21 @@ above command reports given date, generates report and save report to disk. Don'
 
 ### Usage for Weekly Report
 ```
-* mvn spring-boot:run weeklyReport manager="<manager-name>"
+* mvn spring-boot:run weeklyReport
 or
-* java -jar ws-pro-report-<version>.jar weeklyReport manager="manager-name"
+* java -jar ws-pro-report-<version>.jar weeklyReport
 ```
 above command reports last week, generates report and send email to active ICs work email.
 #### Optinal parameters for Weekly Report
 ```
 * thisweek 
 ```
+thisweek param, creates weekly report from fist day of current week to today.
 ##### usage of thisweek param
 ```
-* mvn spring-boot:run weeklyReport manager="<manager-name>" thisweek
+* mvn spring-boot:run weeklyReport thisweek
 or
-* java -jar ws-pro-report-<version>.jar weeklyReport manager="manager-name" thisweek
+* java -jar ws-pro-report-<version>.jar weeklyReport thisweek
 ```
 above command report from this week monday to today and send email to active ICs work email.
 ```
@@ -112,9 +111,9 @@ above command report from this week monday to today and send email to active ICs
 ```
 ##### usage of date param
 ```
-* mvn spring-boot:run weeklyReport manager="<manager-name>" date="2018-12-10"
+* mvn spring-boot:run weeklyReport date="2018-12-10"
 or
-* java -jar ws-pro-report-<version>.jar weeklyReport manager="manager-name" date="2018-12-10"
+* java -jar ws-pro-report-<version>.jar weeklyReport date="2018-12-10"
 ```
 above command report from given date to today and send email to active ICs work email.
 ```
@@ -122,24 +121,22 @@ above command report from given date to today and send email to active ICs work 
 ```
 ##### usage of dryRun param
 ```
-* mvn spring-boot:run weeklyReport manager="<manager-name>" dryRun
+* mvn spring-boot:run weeklyReport dryRun
 or
-* java -jar ws-pro-report-<version>.jar weeklyReport manager="manager-name" dryRun
+* java -jar ws-pro-report-<version>.jar weeklyReport dryRun
 ```
 above command reports given last week, generates report and save report to disk. Don't send any email.
 ```
-* mvn spring-boot:run weeklyReport manager="<manager-name>" thisweek dryRun
+* mvn spring-boot:run weeklyReport thisweek dryRun
 or
-* java -jar ws-pro-report-<version>.jar weeklyReport manager="manager-name" thisweek dryRun
+* java -jar ws-pro-report-<version>.jar weeklyReport thisweek dryRun
 ```
 above command reports this week, generates report and save report to disk. Don't send any email.
 
 ## Google SpreadSheet data filling
 You can fill data to spreadsheet manually. But It has a time-base trigger like cron-job. It runs daily and weekly based.
-Daily base trigger runs every  01:00 AM, weekly base trigger runs every Monday 01:00 AM.
+Daily base trigger runs every  04:00 AM, weekly base trigger runs every Monday 04:00 AM.
 
 ## Authors
 
 * **Özcan ÇAĞIRICI** -  [github.com/ozcancagirici](https://github.com/ozcancagirici)
-
-See also the list of [contributors](https://github.com/trilogy-group/Bootcamp-Innovation-ozcancagirici/graphs/contributors) who participated in this project.

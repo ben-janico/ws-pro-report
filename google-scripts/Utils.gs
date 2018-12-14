@@ -66,6 +66,7 @@ Date.prototype.getWeekNumber = function () {
 
 function testUtils(){
   var today = Utils.today();
+  var formatted=Utils.formatDate(today);
   Logger.log('today: %s', today, Utils.isWorkDay(today));
   for(var i=0;i<10;i++){
     var day = Utils.addDays(today, -1*i);

@@ -1,6 +1,7 @@
 .gradle
 /build/
 **/build/
+**/target/
 
 #eclipse files
 .classpath
@@ -75,5 +76,5 @@ fabric.properties
 *.iml
 .idea/
 *.log
-target/*
-tokens/*
+**/target/*
+**/tokens/*
