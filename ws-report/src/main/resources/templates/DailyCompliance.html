@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Daily Compliance Report</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        .green {
+            background-color: #b7e1cd;
+        }
+
+        .red {
+            background-color: #f4c7c3;
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0;">
+    <p>Hey Bootcampers,</p>
+    <p>You can find compliance report of <b><span th:text="${date}"></span> </b>
+    <table>
+        <thead>
+        <tr style="background-color: #cccc; height:30px;">
+            <td><b>IC Name</b></td>
+            <td><b>7 Hrs per day</b></td>
+            <td><b>Deep Work Blocks</b></td>
+            <td><b>Dev Time > 70%</b></td>
+            <td><b>Daily CiC</b></td>
+            <td><b>Intensity-Focus 90%</b></td>
+            <td><b>Focus Score</b></td>
+            <td><b>Intensity Score</b></td>
+            <td><b>Dev. Time %</b></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr align="center" th:each="ic : ${values}">
+            <td style="background-color: #cccc;" th:text="${ic.icName}"></td>
+            <td th:class="${ic.sevenHrsPerDay=='Yes'?'green':'red'}"  th:text="${ic.sevenHrsPerDay}"></td>
+            <td th:class="${ic.deepWorkBlocks=='Yes'?'green':'red'}"  th:text="${ic.deepWorkBlocks}"></td>
+            <td th:class="${ic.devTime=='Yes'?'green':'red'}"  th:text="${ic.devTime}"></td>
+            <td th:class="${ic.dailyCic=='Yes'?'green':'red'}"  th:text="${ic.dailyCic}"></td>
+            <td th:class="${ic.intensityFocus=='Yes'?'green':'red'}"  th:text="${ic.intensityFocus}"></td>
+            <td th:class="${ic.focusScore >= 90 ?'green':'red'}"  th:text="${ic.focusScore}"></td>
+            <td th:class="${ic.intensityScore >= 70 ?'green':'red'}"  th:text="${ic.intensityScore}"></td>
+            <td th:class="${ic.devTimePercentage >= 75 ?'green':'red'}"  th:text="${ic.devTimePercentage}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <p>Please note that there are 5 main compliance criterias for BOOTCAMP.
+        <ul>
+            <li><b>Min 7 hrs daily work time (weekday)</b> : All ICs need to log minimum of 7 hrs every weekday
+            <li><b>Deep work blocks</b> : All ICs need to stop tracker a maximum of 3 times
+            <li><b>Dev Time >70%</b> : All ICs need to use 70% of their time with development
+            <li><b>Conducting Check in Chats</b> : ALL ICs need to update CiC at the start of every day. You need to provide details like;
+                <ul>
+                    <li>What have you worked on yesterday?
+                    <li>What are you planning to work on today?
+                    <li>Do you have any blockers?
+                    <li>Mark your STATUS as listed.
+                </ul>
+            <li><b>WsPro Alignment</b> : All ICs need to have more than 90% focus, 90% intensity
+        </ul>
+    <p> You may follow <a href="https://confluence.devfactory.com/display/BOOT/WSPro+Tips">WsPro Guidelines</a> to increase focus and
+        intensity.</p>
+    <p>Best regards</p>
+</body>
+</html>

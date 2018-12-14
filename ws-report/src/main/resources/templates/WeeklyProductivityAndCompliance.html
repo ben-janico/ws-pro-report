@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Weekly Productivity Report</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        .green {
+            background-color: #b7e1cd;
+        }
+
+        .yellow {
+            background-color: #F9E79F;
+        }
+
+        .red {
+            background-color: #f4c7c3;
+        }
+
+        .week4 {
+            background-color: #D2B4DE;
+        }
+
+        .week3 {
+            background-color: #AED6F1;
+        }
+
+        .week2 {
+            background-color: #A9DFBF;
+        }
+
+        .week1 {
+            background-color: #FAD7A0;
+        }
+    </style>
+</head>
+    <body style="margin: 0; padding: 0;">
+        <p><b>Summary</b></p>
+        <ul>
+            <li>Number of ICs last week: <span th:text="${numberOfICs}"></span></li>
+            <li>Number of successful days last week: <span th:text="${numberOfSucDays}"></span></li>
+            <li>The average score of ICs in last week: <span th:text="${averageScore}"></span></li>
+        </ul>
+        <p><b>Productivity (grades)</b></p>
+        <table>
+            <thead>
+            <tr style="background-color: #cccc; height:30px;">
+                <td colspan="7"></td>
+                <td colspan="2"><b>Week 1</b></td>
+                <td colspan="2"><b>Week 2</b></td>
+                <td colspan="2"><b>Week 3</b></td>
+                <td colspan="2"><b>Week 4</b></td>
+            </tr>
+            <tr style="background-color: #cccc; height:30px;">
+                <td><b>Completed</b></td>
+                <td><b>IC Name</b></td>
+                <td><b>Role</b></td>
+                <td><b>Tech.</b></td>
+                <td><b>Boot Start</b></td>
+                <td><b>Current Team</b></td>
+                <td><b>SEM</b></td>
+                <td><b>Team</b></td>
+                <td><b>Score</b></td>
+                <td><b>Team</b></td>
+                <td><b>Score</b></td>
+                <td><b>Team</b></td>
+                <td><b>Score</b></td>
+                <td><b>Team</b></td>
+                <td><b>Score</b></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr align="center" th:each="ic : ${productivity}">
+                <td style="width: auto;" th:class="${ic.whichWeek}" th:text="${ic.completedWeek}"></td>
+                <td style="width: auto;" th:class="${ic.avgScore >= 0.6 ? 'green':(ic.avgScore < 0.4 ? 'red':'yellow')}" th:text="${ic.icName}"></td>
+                <td style="width: auto;" th:class="${ic.avgScore >= 0.6 ? 'green':(ic.avgScore < 0.4 ? 'red':'yellow')}" th:text="${ic.role}"></td>
+                <td style="width: auto;" th:class="${ic.avgScore >= 0.6 ? 'green':(ic.avgScore < 0.4 ? 'red':'yellow')}" th:text="${ic.tech}"></td>
+                <td style="width: auto;" th:class="${ic.avgScore >= 0.6 ? 'green':(ic.avgScore < 0.4 ? 'red':'yellow')}" th:text="${ic.bootStart}"></td>
+                <td style="width: auto;" th:class="${ic.avgScore >= 0.6 ? 'green':(ic.avgScore < 0.4 ? 'red':'yellow')}" th:text="${ic.currentTeam}"></td>
+                <td style="width: auto;" th:class="${ic.avgScore >= 0.6 ? 'green':(ic.avgScore < 0.4 ? 'red':'yellow')}" th:text="${ic.sem}"></td>
+                <td style="width: 80px;" th:class="${ic.avgScore >= 0.6 ? 'green':(ic.avgScore < 0.4 ? 'red':'yellow')}" th:text="${ic.week1team}"></td>
+                <td style="width: 50px;" th:class="${ic.avgScore >= 0.6 ? 'green':(ic.avgScore < 0.4 ? 'red':'yellow')}" th:text="${ic.week1Score >= 0 ? ic.week1Score :''}"></td>
+                <td style="width: 80px;" th:class="${ic.avgScore >= 0.6 ? 'green':(ic.avgScore < 0.4 ? 'red':'yellow')}" th:text="${ic.week2team}"></td>
+                <td style="width: 50px;" th:class="${ic.avgScore >= 0.6 ? 'green':(ic.avgScore < 0.4 ? 'red':'yellow')}" th:text="${ic.week2Score >= 0 ? ic.week2Score :''}"></td>
+                <td style="width: 80px;" th:class="${ic.avgScore >= 0.6 ? 'green':(ic.avgScore < 0.4 ? 'red':'yellow')}" th:text="${ic.week3team}"></td>
+                <td style="width: 50px;" th:class="${ic.avgScore >= 0.6 ? 'green':(ic.avgScore < 0.4 ? 'red':'yellow')}" th:text="${ic.week3Score >= 0 ? ic.week3Score :''}"></td>
+                <td style="width: 80px;" th:class="${ic.avgScore >= 0.6 ? 'green':(ic.avgScore < 0.4 ? 'red':'yellow')}" th:text="${ic.week4team}"></td>
+                <td style="width: 50px;" th:class="${ic.avgScore >= 0.6 ? 'green':(ic.avgScore < 0.4 ? 'red':'yellow')}" th:text="${ic.week4Score >= 0 ? ic.week4Score :''}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <p><b>Compliance</b></p>
+        <p>Weekly compliance: below table displays the number of compliant days for each point</p>
+        <table>
+            <thead>
+            <tr style="background-color: #cccc; height:30px;">
+                <td><b>IC Name</b></td>
+                <td><b>7 Hrs per day</b></td>
+                <td><b>Deep Work Blocks</b></td>
+                <td><b>Dev Time > 70%</b></td>
+                <td><b>Daily CiC</b></td>
+                <td><b>Intensity-Focus 90%</b></td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr align="center" th:each="ic : ${compliance}">
+                <td style="background-color: #cccc;" th:text="${ic.icName}"></td>
+                <td th:class="${ic.sevenHrsPerDay > 0 ?'green':'red'}"  th:text="${ic.sevenHrsPerDay}"></td>
+                <td th:class="${ic.deepWorkBlocks > 0 ?'green':'red'}"  th:text="${ic.deepWorkBlocks}"></td>
+                <td th:class="${ic.devTime > 0 ?'green':'red'}"  th:text="${ic.devTime}"></td>
+                <td th:class="${ic.dailyCic > 0 ?'green':'red'}"  th:text="${ic.dailyCic}"></td>
+                <td th:class="${ic.intensityFocus > 0 ?'green':'red'}"  th:text="${ic.intensityFocus}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <ul>
+            <li>Below is the shared standard reference for WSPro Compliance</li>
+        </ul>
+        <ol>
+            <li><strong>Attendance:</strong>Each IC needs to work minimum of 7 hrs every weekday</li>
+            <li><strong>Deep work blocks:</strong>Each IC should not stop tracker more than 3 times every weekday</li>
+            <li><strong>WsPro Compliance:</strong>Each IC should have 90% focus and 90% intensity every weekday (tips to increase focus and
+                intensity)
+                <a href="https://confluence.devfactory.com/display/BOOT/WSPro+Tips">https://confluence.devfactory.com/display/BOOT/WSPro+Tips</a>
+            </li>
+            <li><strong>Time Allocation:</strong>Each IC should work more than 70% of their time in development every weekday (check “Activity
+                Classification” section)
+            </li>
+            <li><strong>Worker initiated CiC:</strong>Each IC should fill check-in chat with below information every weekday in the morning.
+                <ol>
+                    <li>What have you worked on yesterday?</li>
+                    <li>What are you planning to work on today?</li>
+                    <li>Do you have any blockers?</li>
+                    <li>If YES, then what actions ?</li>
+                    <li>Mark your STATUS as listed.</li>
+                </ol>
+            </li>
+        </ol>
+    </body>
+</html>
