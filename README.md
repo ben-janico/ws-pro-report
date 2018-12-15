@@ -107,7 +107,7 @@ if your browser will not open automatically, copy and paste link to browser and 
 ## Running and Debuging
 ### Usage for Daily Report
 ```
-* mvn spring-boot:run dailyReport manager="<manager-name>"
+bin/bash: mvn spring-boot:run dailyReport manager="<manager-name>"
 or
 * java -jar ws-pro-report-<version>.jar dailyReport manager="manager-name"
 ```
