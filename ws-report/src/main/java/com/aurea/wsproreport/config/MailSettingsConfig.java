@@ -49,4 +49,9 @@ public class MailSettingsConfig {
     @Setter
     @Value("${mail.cc.list}")
     private String ccList;
+
+    @Getter
+    @Setter
+    @Value("${mail.test}")
+    private String test;
 }

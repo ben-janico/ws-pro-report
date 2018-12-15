@@ -154,7 +154,7 @@ public class WeeklyReportService {
 
     private Integer nvlOrDefaultInteger(List<Object> row, int index) {
         if (row.size() > index) {
-            return StringUtil.nvlOrEmpty(row.get(index), -1);
+            return StringUtil.nvlOrEmpty(row.get(index), 0);
         }
         return 0;
 

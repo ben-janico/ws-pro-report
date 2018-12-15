@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
+
+import com.aurea.wsproreport.config.TemplateConfig;
 import com.aurea.wsproreport.model.PerformanceProductivityModel;
 import com.aurea.wsproreport.model.WeeklyComplianceModel;
 import com.aurea.wsproreport.util.StringUtil;
@@ -17,7 +19,9 @@ public class WeeklyReportTemplateBuilder {
 
     private final TemplateEngine templateEngine;
 
-    private final String templateName = "WeeklyProductivityAndCompliance";
+
+    @Autowired
+    private TemplateConfig templateConfig;
 
     @Autowired
     public WeeklyReportTemplateBuilder(TemplateEngine templateEngine) {
@@ -46,6 +50,6 @@ public class WeeklyReportTemplateBuilder {
         context.setVariable("numberOfICs", performanceProductivityModels.size());
         context.setVariable("numberOfSucDays", numberOfSucDaysLastWeek.toString());
         context.setVariable("averageScore", String.format("%s / 5", averageScore.toString()));
-        return templateEngine.process(templateName, context);
+        return templateEngine.process(templateConfig.getWeeklyReportName(), context);
     }
 }

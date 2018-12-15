@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 import java.util.stream.Collectors;
+
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -12,9 +13,12 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
 import com.aurea.wsproreport.logger.WsLogger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.aurea.wsproreport.config.MailSettingsConfig;
 import com.aurea.wsproreport.util.StringUtil;
 
@@ -53,11 +57,20 @@ public class MailSenderService {
             msg.setSubject(subject, "UTF-8");
             msg.setContent(body, "text/html;charset=utf-8");
 
-            msg.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse(recipientList.stream().collect(Collectors.joining(","))));
-            if (StringUtil.nvlOrEmpty(config.getCcList(), false)) {
-                msg.setRecipients(Message.RecipientType.CC,
-                        InternetAddress.parse(config.getCcList()));
+            if (config.getTest().equalsIgnoreCase("true")) {
+                msg.setRecipients(Message.RecipientType.TO,
+                        InternetAddress.parse(config.getUsername()));
+                if (StringUtil.nvlOrEmpty(config.getCcList(), false)) {
+                    msg.setRecipients(Message.RecipientType.CC,
+                            InternetAddress.parse(config.getUsername()));
+                }
+            } else {
+                msg.setRecipients(Message.RecipientType.TO,
+                        InternetAddress.parse(recipientList.stream().collect(Collectors.joining(","))));
+                if (StringUtil.nvlOrEmpty(config.getCcList(), false)) {
+                    msg.setRecipients(Message.RecipientType.CC,
+                            InternetAddress.parse(config.getCcList()));
+                }
             }
             Transport.send(msg);
         } catch (MessagingException e) {

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
+
+import com.aurea.wsproreport.config.TemplateConfig;
 import com.aurea.wsproreport.model.DailyReportModel;
 import com.aurea.wsproreport.util.DateUtil;
 
@@ -14,7 +16,8 @@ public class DailyReportTemplateBuilder {
 
     private final TemplateEngine templateEngine;
 
-    private final String templateName = "DailyCompliance";
+    @Autowired
+    private TemplateConfig templateConfig;
 
     @Autowired
     public DailyReportTemplateBuilder(TemplateEngine templateEngine) {
@@ -25,6 +28,6 @@ public class DailyReportTemplateBuilder {
         Context context = new Context();
         context.setVariable("values", dailyReportModelMap.values());
         context.setVariable("date", DateUtil.formatDate(reportDate));
-        return templateEngine.process(templateName, context);
+        return templateEngine.process(templateConfig.getDailyReportName(), context);
     }
 }
