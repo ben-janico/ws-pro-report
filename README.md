@@ -32,7 +32,7 @@ Select Other (Custom name) and set this application.name value then generate.
 
 mail.replyTo also mandatory. You can set your email adress.
 
-mail.cc.list optinal. You can leave empty. If you set more than one, please write
+mail.cc.list optional. You can leave empty. If you set more than one, please write
 them seperated by comma.
 
 ##### other smtp configuration
@@ -86,7 +86,7 @@ google sheet but If you do this, you have to change source parameter to new comp
 These values very important for the application. If source id's or name/column index will have
 an error, application doesn't run or create wrong reports.
 
-The application also uses gradebook google sheet. It containse weekly grade of Bootcamper.
+The application also uses gradebook google sheet. It contains weekly grade of Bootcamper.
 
 below links refer google sheets which is used this application. 
 
