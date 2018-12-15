@@ -100,9 +100,9 @@ Please open the following address in your browser:
 ```
 if your browser will not open automatically, copy and paste link to browser and authorize.
 
-![how to app password create](images/gmailAppPassword.png)
+![how to app password create](images/selectYourAccount.png)
 
-![how to app password create](images/gmailAppPassword.png)
+![how to app password create](images/allowAccessToProject.png)
 
 ## Running and Debuging
 ### Usage for Daily Report
