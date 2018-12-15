@@ -90,6 +90,10 @@ The application also uses gradebook google sheet. It containse weekly grade of B
 
 below links refer google sheets which is used this application. 
 
+[compliance sheet](https://docs.google.com/spreadsheets/d/1bI6YOhGianCq6koOMfWwHY9xeMwX6nCPxJghBhSN4uA)
+
+[gradebook](https://docs.google.com/spreadsheets/d/1TNc1P8Yolas7s27VgBIks5fFP77LGMbscKxuuVP5YME)
+
 Note that you should grant access to view those google sheets.
 
 #### Google API Authorization
@@ -107,7 +111,7 @@ if your browser will not open automatically, copy and paste link to browser and 
 ## Running and Debuging
 ### Usage for Daily Report
 ```
-bin/bash: mvn spring-boot:run dailyReport manager="<manager-name>"
+* mvn spring-boot:run dailyReport manager="<manager-name>"
 or
 * java -jar ws-pro-report-<version>.jar dailyReport manager="manager-name"
 ```
