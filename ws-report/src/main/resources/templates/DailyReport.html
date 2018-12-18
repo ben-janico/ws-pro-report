@@ -25,7 +25,7 @@
         <thead>
         <tr style="background-color: #cccc; height:30px;">
             <td><b>IC Name</b></td>
-            <td><b>7 Hrs per day</b></td>
+            <td><b>8 Hrs per day</b></td>
             <td><b>Deep Work Blocks</b></td>
             <td><b>Dev Time > 70%</b></td>
             <td><b>Daily CiC</b></td>
@@ -38,7 +38,7 @@
         <tbody>
         <tr align="center" th:each="ic : ${values}">
             <td style="background-color: #cccc;" th:text="${ic.icName}"></td>
-            <td th:class="${ic.sevenHrsPerDay=='Yes'?'green':'red'}"  th:text="${ic.sevenHrsPerDay}"></td>
+            <td th:class="${ic.eightHrsPerDay=='Yes'?'green':'red'}"  th:text="${ic.eightHrsPerDay}"></td>
             <td th:class="${ic.deepWorkBlocks=='Yes'?'green':'red'}"  th:text="${ic.deepWorkBlocks}"></td>
             <td th:class="${ic.devTime=='Yes'?'green':'red'}"  th:text="${ic.devTime}"></td>
             <td th:class="${ic.dailyCic=='Yes'?'green':'red'}"  th:text="${ic.dailyCic}"></td>
@@ -51,7 +51,7 @@
     </table>
     <p>Please note that there are 5 main compliance criterias for BOOTCAMP.
         <ul>
-            <li><b>Min 7 hrs daily work time (weekday)</b> : All ICs need to log minimum of 7 hrs every weekday
+            <li><b>Min 8 hrs daily work time (weekday)</b> : All ICs need to log minimum of 8 hrs every weekday
             <li><b>Deep work blocks</b> : All ICs need to stop tracker a maximum of 3 times
             <li><b>Dev Time >70%</b> : All ICs need to use 70% of their time with development
             <li><b>Conducting Check in Chats</b> : ALL ICs need to update CiC at the start of every day. You need to provide details like;

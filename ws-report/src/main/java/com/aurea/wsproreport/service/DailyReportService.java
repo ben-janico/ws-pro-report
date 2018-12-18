@@ -88,7 +88,7 @@ public class DailyReportService {
                             if (checkManager && DateUtil.equalsToString(reportDate, rowDate)) {
                                 DailyReportModel model = new DailyReportModel();
                                 model.setIcName(icName);
-                                model.setSevenHrsPerDay(StringUtil.nvlOrEmpty(row.get(4)));
+                                model.setEightHrsPerDay(StringUtil.nvlOrEmpty(row.get(4)));
                                 model.setDeepWorkBlocks(StringUtil.nvlOrEmpty(row.get(5)));
                                 model.setDevTime(StringUtil.nvlOrEmpty(row.get(6)));
                                 model.setDailyCic(StringUtil.nvlOrEmpty(row.get(7)));

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
-
 import com.aurea.wsproreport.config.TemplateConfig;
 import com.aurea.wsproreport.model.DailyReportModel;
 import com.aurea.wsproreport.util.DateUtil;

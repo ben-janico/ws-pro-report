@@ -15,7 +15,7 @@ public class WeeklyComplianceModel {
 
     @Getter
     @Setter
-    private int sevenHrsPerDay = 0;
+    private int eightHrsPerDay = 0;
 
     @Getter
     @Setter
@@ -33,8 +33,8 @@ public class WeeklyComplianceModel {
     @Setter
     private int intensityFocus = 0;
 
-    public void addSevenHrsPerDay(int sevenHrsPerDay) {
-        this.sevenHrsPerDay += sevenHrsPerDay;
+    public void addSevenHrsPerDay(int eightHrsPerDay) {
+        this.eightHrsPerDay += eightHrsPerDay;
     }
 
     public void addDeepWorkBlocks(int deepWorkBlocks) {
