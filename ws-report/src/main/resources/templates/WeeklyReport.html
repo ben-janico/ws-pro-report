@@ -99,7 +99,7 @@
             <thead>
             <tr style="background-color: #cccc; height:30px;">
                 <td><b>IC Name</b></td>
-                <td><b>7 Hrs per day</b></td>
+                <td><b>8 Hrs per day</b></td>
                 <td><b>Deep Work Blocks</b></td>
                 <td><b>Dev Time > 70%</b></td>
                 <td><b>Daily CiC</b></td>
@@ -109,7 +109,7 @@
             <tbody>
             <tr align="center" th:each="ic : ${compliance}">
                 <td style="background-color: #cccc;" th:text="${ic.icName}"></td>
-                <td th:class="${ic.sevenHrsPerDay > 0 ?'green':'red'}"  th:text="${ic.sevenHrsPerDay}"></td>
+                <td th:class="${ic.eightHrsPerDay > 0 ?'green':'red'}"  th:text="${ic.eightHrsPerDay}"></td>
                 <td th:class="${ic.deepWorkBlocks > 0 ?'green':'red'}"  th:text="${ic.deepWorkBlocks}"></td>
                 <td th:class="${ic.devTime > 0 ?'green':'red'}"  th:text="${ic.devTime}"></td>
                 <td th:class="${ic.dailyCic > 0 ?'green':'red'}"  th:text="${ic.dailyCic}"></td>
@@ -121,7 +121,7 @@
             <li>Below is the shared standard reference for WSPro Compliance</li>
         </ul>
         <ol>
-            <li><strong>Attendance:</strong>Each IC needs to work minimum of 7 hrs every weekday</li>
+            <li><strong>Attendance:</strong>Each IC needs to work minimum of 8 hrs every weekday</li>
             <li><strong>Deep work blocks:</strong>Each IC should not stop tracker more than 3 times every weekday</li>
             <li><strong>WsPro Compliance:</strong>Each IC should have 90% focus and 90% intensity every weekday (tips to increase focus and
                 intensity)

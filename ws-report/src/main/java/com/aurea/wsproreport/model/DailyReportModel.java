@@ -14,7 +14,7 @@ public class DailyReportModel {
 
     @Getter
     @Setter
-    private String sevenHrsPerDay;
+    private String eightHrsPerDay;
 
     @Getter
     @Setter
